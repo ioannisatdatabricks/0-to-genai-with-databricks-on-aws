@@ -101,13 +101,13 @@
 # MAGIC   - and appends a *_titan* suffix in the index name to create a different one:
 # MAGIC   
 # MAGIC     `vs_index_fullname = f"{catalog}.{db}.databricks_documentation_vs_index_titan"`
-# MAGIC   - define the Titan model to be used for the embeddings:
+# MAGIC   - define the model to be used for the embeddings:
 # MAGIC
-# MAGIC     `embedding_model_endpoint_name='amazon-titan-g1-text-02' #The embedding endpoint used to create the embeddings`
+# MAGIC     `embedding_model_endpoint_name='bedrock_embeddings' #The embedding endpoint used to create the embeddings`
 # MAGIC - edits cell 13 (where the chain configuration is defined)
 # MAGIC   - specifies the LLM for the chat from Bedrock
 # MAGIC
-# MAGIC     `"llm_model_serving_endpoint_name": "anthropic-claude-3-5-sonnet",  # the foundation model we want to use`
+# MAGIC     `"llm_model_serving_endpoint_name": "bedrock_chat",  # the foundation model we want to use`
 # MAGIC   - specifies the new vector search index to be used
 # MAGIC
 # MAGIC     `"vector_search_index": f"{catalog}.{db}.databricks_documentation_vs_index_titan",`
