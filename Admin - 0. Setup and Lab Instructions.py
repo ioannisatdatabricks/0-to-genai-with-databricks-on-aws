@@ -134,8 +134,11 @@
 # MAGIC
 # MAGIC #### 2.4.2 Presenter actions
 # MAGIC - Goes to the `Catalog` page of the Workspace and shows the new index and new model that has been created.
-# MAGIC - Scrolls to the point where the URL for the UI of the chatbot app has been generated, and tries out the new app.
-# MAGIC - Scrolls to the point where the model evaluation is happening, opens the evaluation results and comments on the difference from the previous run with the original LLMs used.
+# MAGIC - On the notebook
+# MAGIC   - Scrolls to the point where the URL for the UI of the chatbot app has been generated, and tries out the new app.
+# MAGIC   - Scrolls to the point where the model evaluation is happening, opens the evaluation results and comments on the difference from the previous run with the original LLMs used.
+# MAGIC - Goes to the `Playground` page of the Workspace and
+# MAGIC   - compares the original LLMs used as well as the two RAG chains, asking questions relevant to Databricks.
 # MAGIC
 # MAGIC **Typical business problems and value added discussed at this point**:
 # MAGIC - Minimising experimentation costs for Generative AI by maximising choice for LLMs and serving platforms, which accelerates innovation.
