@@ -35,7 +35,7 @@ embeddingsProviderMapping = {
 # The chat model available per region
 chatModelMapping = {
     'us-east-1': "claude-3-5-sonnet-20240620-v1:0",
-    'us-west-2': "claude-v2:1"
+    'us-west-2': "claude-v2:1" # Note that claude-3-5 can be made available as well after activation on the AWS console
 }
 
 # The chat model available per region

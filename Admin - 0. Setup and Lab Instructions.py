@@ -9,12 +9,20 @@
 # MAGIC
 # MAGIC ### 1.2 Set up the secrets for the Bedrock credentials
 # MAGIC
-# MAGIC #### 1.2.1 (if needed) Operations on the AWS account
-# MAGIC In an AWS account create an IAM user, with programmatic access only and with the `AmazonBedrockFullAccess` IAM policy attached. 
+# MAGIC #### 1.2.1 Operations on the AWS account
+# MAGIC This is executed:
+# MAGIC - by the workshop admin, if a single AWS account is used for Bedrock access
+# MAGIC - by every participant, if each of then has access to a dedicated AWS account (eg. through Workshop Studio)
+# MAGIC
+# MAGIC In an AWS account create an IAM user, with programmatic access only. For permissions one can:
+# MAGIC - either attach the `AmazonBedrockFullAccess` IAM policy, or
+# MAGIC - create an inline policy allowing bedrock:Invoke* to all resources.
 # MAGIC
 # MAGIC Create a new access key (to be invalidated at the end of the workshop) and save the access key Id and the secret access key.
 # MAGIC
-# MAGIC #### 1.2.2 Storing the AWS credentials in Databricks secrets
+# MAGIC #### 1.2.2 Storing the AWS credentials in Databricks secrets (if needed)
+# MAGIC *This is applicable only in the case where the admin will create a single set of serving endpoints to Bedrock that will be used by all participants.*
+# MAGIC
 # MAGIC Open the **Admin - 1. Secrets Setup For Bedrock** notebook
 # MAGIC - Edit cell 4 and set the values of `aws_access_key_id` and `aws_secret_access_key` variables with the access key id and the secret access key from the above step.
 # MAGIC - Attach to a serverless compute and run all cells of the notebook.
@@ -85,9 +93,11 @@
 # MAGIC - Once the presenter reaches cell 31, (s)he clicks on the `view evaluation results` button, which opens in a new tab the evaluation page of the run corresponding to the registered model within the Experiments page of the workspace.
 # MAGIC
 # MAGIC ### 2.3 Creation of the Bedrock model serving endpoints
-# MAGIC - The presenter/admin goes to the *Serving* page of the workspace shows how a serving endpoint is setup in the UI, without completing the process
+# MAGIC - The presenter/admin goes to the *Serving* page of the workspace shows how a serving endpoint is setup in the UI.
 # MAGIC
-# MAGIC - The presenter/admin shows and runs the notebook **Admin - 3. Bedrock Endpoints Setup**.
+# MAGIC - Endpoint creation:
+# MAGIC   - If there is a single AWS account used for the Bedrock, the presenter/admin shows and runs the notebook **Admin - 3. Bedrock Endpoints Setup**.
+# MAGIC   - If every participant has an AWS account, the admin guides the participants to create the endpoints (with their user name appended to the endpoint name) in the UI.
 # MAGIC
 # MAGIC - The presenter/admin shows the new endpoints, and runs a test query on the endpoint set up for the chat task
 # MAGIC
@@ -101,11 +111,11 @@
 # MAGIC   - and appends a *_titan* suffix in the index name to create a different one:
 # MAGIC   
 # MAGIC     `vs_index_fullname = f"{catalog}.{db}.databricks_documentation_vs_index_titan"`
-# MAGIC   - define the model to be used for the embeddings:
+# MAGIC   - define the model to be used for the embeddings (it should be the name of the endpoint created in the previous step):
 # MAGIC
 # MAGIC     `embedding_model_endpoint_name='bedrock_embeddings' #The embedding endpoint used to create the embeddings`
 # MAGIC - edits cell 13 (where the chain configuration is defined)
-# MAGIC   - specifies the LLM for the chat from Bedrock
+# MAGIC   - specifies the LLM for the chat from Bedrock (it should be the name of the endpoint created in the previous step)
 # MAGIC
 # MAGIC     `"llm_model_serving_endpoint_name": "bedrock_chat",  # the foundation model we want to use`
 # MAGIC   - specifies the new vector search index to be used
