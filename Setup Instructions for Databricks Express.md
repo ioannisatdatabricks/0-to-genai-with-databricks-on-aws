@@ -2,7 +2,7 @@
 ## Setup instructions for Databricks Express workspaces
 
 ### 1. Install the demo content
-- Create a new notebook and name it, for example "Content Setup"
+- Create a new notebook and name it, for example, "Content Setup"
 - Add the following cells and run the notebook:
   - **cell 1**
 
@@ -26,7 +26,7 @@
 - Perform the following edits:
   - **cell 2**
     
-    update the version of the mlflow and mlflow[xyz] packages to **2.20.0rc0**.
+    update the version of the **mlflow-skinny**, **mlflow**, and **mlflow[gateway]** packages to **2.20.0rc0**.
 
   - **cell 23**
 
