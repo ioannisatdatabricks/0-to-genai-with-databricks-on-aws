@@ -26,10 +26,4 @@
 - Perform the following edits:
   - **cell 2**
     
-    update the version of the **mlflow-skinny**, **mlflow**, and **mlflow[gateway]** packages to **2.20.0rc0**.
-
-  - **cell 23**
-
-    add one more argument in the `mlflow.langchain.log_model` call:
-
-    `pip_requirements=["mlflow", "cloudpickle", "databricks-connect", "databricks-vectorsearch", "ipykernel", "langchain-community", "langchain", "numpy", "pandas", "pyarrow", "pydantic", "pyspark"]`
+    update the version of the **mlflow-skinny**, **mlflow**, and **mlflow[gateway]** packages to **2.20.0**.
