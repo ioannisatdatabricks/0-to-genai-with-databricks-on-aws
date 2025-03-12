@@ -19,19 +19,26 @@
   - **cell 3**
 
     `dbdemos.install('llm-rag-chatbot')`
+
+    Upon successful installation in the notebook output, there should be a link to the notebook **01-first-step/01-First-Step-RAG-On-Databricks**. That will be the main notebook to work with.
   
-###  2. Patch the demo notebook
-- Go to your home folder in the workspace and enter the folder **llm-rag-chatbot/01-first-step**
-- Open the notebook **01-First-Step-RAG-On-Databricks**
-- Perform the following edits:
-  - **cell 2**
+### 2. Create model serving endpoints to Bedrock
+For the below it is assumed that every user has access to an AWS account where an IAM user with Bedrock access privileges is defined and the Anthropic Claude Sonnet and Amazon Titan models have been enabled.
 
-    Assuming dbdemos version 0.6.8:
-    - update the version of the **mlflow-skinny**, **mlflow**, and **mlflow[gateway]** packages to **2.20.1**.
-    - add **bs4** in the list of packages to be pip-installed.
-   
-    After these changes the cell should like like this:
+- **a** Using the UI create an external model serving endpoint for the embeddings. Select Bedrock as external serving provider, Amazon Titan as the model for the embeddings and the credentials of the IAM user with the Bedrock access privileges
+- **b** Repeat for the chat model (use Claude Sonnet)
 
-    `%pip install -U --quiet databricks-sdk==0.40.0 databricks-agents==0.15.0 mlflow-skinny==2.20.1 mlflow==2.20.1 mlflow[gateway]==2.20.1 databricks-vectorsearch langchain==0.2.1 langchain_core==0.2.5 langchain_community==0.2.4 bs4`
+### 3. Update the notebook
+- Navigate to the **01-first-step** folder and open the **01-First-Step-RAG-On-Databricks**
+- Replace the LLMs used for the embeddings and chat:
+  - **cell 8**
 
-    `dbutils.library.restartPython()`
+    define the model to be used for the embeddings (it should be the name of the endpoint created in step 2a):
+
+    `embedding_model_endpoint_name=<Endpoint Serving Name for Embeddings> #The embedding endpoint used to create the embeddings`
+
+  - **cell 13**
+ 
+    define the model to be used for the chat (it should be the name of the endpoint created in step 2b):
+
+    `"llm_model_serving_endpoint_name": "bedrock_chat",  # the foundation model we want to use`
