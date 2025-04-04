@@ -44,3 +44,9 @@ For the below, it is assumed that every user has access to an AWS account where 
     define the model to be used for the chat (it should be the name of the endpoint created in step 2b):
 
     `"llm_model_serving_endpoint_name": <Endpoint Serving Name for Chat>,  # the foundation model we want to use`
+
+### 4. Run the notebook
+Run all cells using the serverless compute. Note that there are three points that take about 10 minutes each to execute the first time the notebook is run:
+- When the Vector Search engine is created programmatically
+- When the Vector Search index is built for the first time
+- When the model that is built and registered in Unity Catalog is deployed, i.e. a serving endpoint for the RAG agent is set up.
