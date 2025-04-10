@@ -18,7 +18,7 @@
 
   - **cell 3**
 
-    `dbdemos.install('llm-rag-chatbot')`
+    `dbdemos.install('llm-rag-chatbot', catalog='workspace')`
 
     Upon successful installation in the notebook output, there should be a link to the notebook **01-first-step/01-First-Step-RAG-On-Databricks**. That will be the main notebook to work with.
   
@@ -31,7 +31,6 @@ For the below, it is assumed that every user has access to an AWS account where 
 
 ### 3. Update the notebook
 - Navigate to the **01-first-step** folder and open the **01-First-Step-RAG-On-Databricks**
-- Remove the Python package versions that are %pip installed in the first running cell.
 - Replace the LLMs used for the embeddings and chat:
   - **cell 8**
 
